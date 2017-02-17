@@ -7,7 +7,7 @@ const GRAPH = 1;
  * Parameters:	container = container id
  *				config = configuration struct
  * Return value: true
-*/
+ */
 function initDrawContainer(container, config){
 	var result = false;
 	//use config.type as control type
@@ -32,7 +32,7 @@ function initDrawContainer(container, config){
  *				config = config struct
  *				data[i] = dataset of (x-pos, y-pos)
  * Return value: true
-*/
+ */
 function drawDataInContainer(container, config, data){
 	var result = false;
 	//use config.setcount as number of datasets
@@ -53,4 +53,12 @@ function drawDataInContainer(container, config, data){
 	}
 	
 	return result;
+}
+
+ /* Data notification handle
+  * Should call draw functions
+  * Parameters: data, configuration struct
+  * Return value: true
+  */
+function newDataNotification(data, config){
 }
