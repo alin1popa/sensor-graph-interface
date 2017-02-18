@@ -43,3 +43,8 @@ QUnit.test( "Draw error handling", function( assert ) {
   retval = drawDataInContainer("asdsdfghfhfhfg2342", drawconfig);  
   assert.equal( retval, false, "Container check OK" );
 });
+
+QUnit.module( "Data acquire" );
+QUnit.test( "QUnit Test", function( assert ) {
+  assert.equal( 1, 1, "1 = 1" );
+});
