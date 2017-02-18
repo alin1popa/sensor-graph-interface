@@ -21,9 +21,10 @@
   * Parameters: data, configuration struct
   * Return value: true
   */
- function dataCustomProcessing(data, config){
-	
+ function dataCustomProcessing(data, config, g){
 	//TODO custom processing
 	
 	return true;
  }
+ 
+ 
