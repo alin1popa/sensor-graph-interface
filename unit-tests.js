@@ -45,6 +45,12 @@ QUnit.test( "Draw error handling", function( assert ) {
 });
 
 QUnit.module( "Data acquire" );
-QUnit.test( "QUnit Test", function( assert ) {
-  assert.equal( 1, 1, "1 = 1" );
+QUnit.test( "Data test", function( assert ) {
+  var done = assert.async();
+  jsDataCrossroad(82000034,"temperature",Date.now()-1000,Date.now());
+  setTimeout(function() {
+    assert.notEqual( JSON.parse($( "#container" ).html())[0]["time"], "0", "API connection OK (test sensor 82000034 temperature)" );
+    done();
+  },1000);
+  
 });

@@ -61,5 +61,5 @@ function drawDataInContainer(container, config, data){
   * Return value: true
   */
 function newDataNotification(data, config){
-	document.write(JSON.stringify(data));
+	$("#container").text(JSON.stringify(data));
 }
