@@ -1,0 +1,42 @@
+[
+	{
+		"id" : "1",
+		"name" : "Temperature",
+		"value" : "temperature"
+	},
+	{
+		"id" : "2",
+		"name" : "Pressure",
+		"value" : "pressure"
+	},
+	{
+		"id" : "3",
+		"name" : "Humidity",
+		"value" : "humidity"
+	},
+	{
+		"id" : "4",
+		"name" : "VOC",
+		"value" : "voc"
+	},
+	{
+		"id" : "5",
+		"name" : "Formaldehyde",
+		"value" : "ch2o"
+	},
+	{
+		"id" : "6",
+		"name" : "Carbon Dioxide",
+		"value" : "co2"
+	},
+	{
+		"id" : "7",
+		"name" : "PM2.5",
+		"value" : "pm25"
+	},
+	{
+		"id" : "8",
+		"name" : "Radiation",
+		"value" : "cpm"
+	}
+]
