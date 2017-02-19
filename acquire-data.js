@@ -7,8 +7,7 @@
  * Return value: data[]
  */
  function jsDataCrossroad(sensorid, measurement, fromx, tox){
-	//TODO AJAX request from API
-	
+	//TODO AJAX request from API	
 	$.ajax({
 		type: 'GET',
 		url: "http://data.uradmonitor.com/api/v1/devices/" + sensorid + "/" + measurement + "/" + (Date.now() - fromx) + "/" + (Date.now() - tox),
@@ -18,13 +17,14 @@
 			'X-User-hash':'global' },
 		success: function(data) { 
 			// apply factors: 0.01 cpm to usv/h conversion factor for the SI29BG tube
-			if (sensor == "cpm")
+			if (measurement == "cpm")
 				dataCustomProcessing(data, "cpm");
-			return data;
+			
+			document.write(data);
 		},
 		async: true
 	});
-	
+	return data;
 	//TODO 
 	//callback function on success:
 	// - set config struct
@@ -41,7 +41,7 @@
 	//TODO custom processing
 	if (config == "cpm")
 		for (var i = 0; i < data.length; i++)
-			data[i][cpm] *= 0.01;
+			data[i][config] *= 0.01;
 	return true;
  }
  
