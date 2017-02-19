@@ -1,0 +1,107 @@
+[
+	{
+		"name" : "bus01",
+		"id" : "82000034",
+		"color" : "#af0000",
+		"source" : "uradmonitor",
+		"measurements" : [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+	},
+	{
+		"name" : "bus02",
+		"id" : "82000035",
+		"color" : "#acd600",
+		"source" : "uradmonitor",
+		"measurements" : [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+	},
+	{
+		"name" : "bus03",
+		"id" : "82000036",
+		"color" : "#00b4ff",
+		"source" : "uradmonitor",
+		"measurements" : [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+	},
+	{
+		"name" : "bus04",
+		"id" : "82000037",
+		"color" : "#ba6f6b",
+		"source" : "uradmonitor",
+		"measurements" : [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+	},
+	{
+		"name" : "bus05",
+		"id" : "82000038",
+		"color" : "#487800",
+		"source" : "uradmonitor",
+		"measurements" : [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+	},
+	{
+		"name" : "bus06",
+		"id" : "82000039",
+		"color" : "#0041c7",
+		"source" : "uradmonitor",
+		"measurements" : [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+	},
+	{
+		"name" : "bus07",
+		"id" : "8200003A",
+		"color" : "#ff9d5b",
+		"source" : "uradmonitor",
+		"measurements" : [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+	},
+	{
+		"name" : "bus08",
+		"id" : "8200003B",
+		"color" : "#2af385",
+		"source" : "uradmonitor",
+		"measurements" : [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+	},
+	{
+		"name" : "bus09",
+		"id" : "8200003C",
+		"color" : "#a581ce",
+		"source" : "uradmonitor",
+		"measurements" : [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+	},
+	{
+		"name" : "bus10",
+		"id" : "8200003D",
+		"color" : "#ffbc00",
+		"source" : "uradmonitor",
+		"measurements" : [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+	},
+	{
+		"name" : "bus11",
+		"id" : "8200003E",
+		"color" : "#00f9ff",
+		"source" : "uradmonitor",
+		"measurements" : [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+	},
+	{
+		"name" : "bus12",
+		"id" : "8200003F",
+		"color" : "#cd3f8a",
+		"source" : "uradmonitor",
+		"measurements" : [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+	},
+	{
+		"name" : "bus13",
+		"id" : "82000056",
+		"color" : "#03a4cf",
+		"source" : "uradmonitor",
+		"measurements" : [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+	},
+	{
+		"name" : "bus14",
+		"id" : "82000057",
+		"color" : "#006271",
+		"source" : "uradmonitor",
+		"measurements" : [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+	},
+	{
+		"name" : "bus15",
+		"id" : "82000058",
+		"color" : "#ffff00",
+		"source" : "uradmonitor",
+		"measurements" : [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+	}
+]

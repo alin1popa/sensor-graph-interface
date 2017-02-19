@@ -46,10 +46,21 @@ QUnit.test( "Draw error handling", function( assert ) {
 
 QUnit.module( "Data acquire" );
 QUnit.test( "Data test", function( assert ) {
+	
+	$.getJSON("measurements.json", function( measurements ) {
+		$.getJSON("sensors.json", function( sensors ) {
+			$.each( sensors, function( key, sensor ) {
+				$.each( measurements, function( key2, measurement ) {
+					jsDataCrossroad(sensor["id"], measurement["value"], Date.now()-300, Date.now());
+				});
+			});
+		});
+	});
+	
   var done = assert.async();
-  jsDataCrossroad(82000034,"temperature",Date.now()-1000,Date.now());
+  //jsDataCrossroad(82000034,"temperature",Date.now()-1000,Date.now());
   setTimeout(function() {
-    assert.notEqual( JSON.parse($( "#container" ).html())[0]["time"], "0", "API connection OK (test sensor 82000034 temperature)" );
+    assert.notEqual( $( "#container" ).html(), null, "API connection OK (test sensor 82000034 temperature)" );
     done();
   },1000);
   
