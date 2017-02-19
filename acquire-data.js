@@ -4,7 +4,6 @@
  * Parameters:	sensorid = id string
 				measurement = measurement type (const value)
 				from, to = Unix time value
- * Return value: data[]
  */
  function jsDataCrossroad(sensorid, measurement, fromx, tox){
 	//TODO AJAX request from API	
@@ -15,16 +14,14 @@
 		headers: { 'Content-Type' : 'text/plain',
 			'X-User-id':'www',
 			'X-User-hash':'global' },
-		success: function(data) { 
-			// apply factors: 0.01 cpm to usv/h conversion factor for the SI29BG tube
-			if (measurement == "cpm")
-				dataCustomProcessing(data, "cpm");
-			
-			document.write(data);
+		success: function(data) {
+			var config;
+			config.type = measurement;
+			dataCustomProcessing(data,config);
+			newDataNotification(data,config);
 		},
 		async: true
 	});
-	return data;
 	//TODO 
 	//callback function on success:
 	// - set config struct
@@ -39,7 +36,8 @@
   */
  function dataCustomProcessing(data, config){
 	//TODO custom processing
-	if (config == "cpm")
+	// apply factors: 0.01 cpm to usv/h conversion factor for the SI29BG tube
+	if (config.type == "cpm")
 		for (var i = 0; i < data.length; i++)
 			data[i][config] *= 0.01;
 	return true;
