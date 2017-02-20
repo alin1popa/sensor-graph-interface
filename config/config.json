@@ -1,0 +1,36 @@
+{
+	"uradmonitor" : {
+		"url" : "http://data.uradmonitor.com/api/v1/devices/",
+		"headers" : [
+			{
+				"name" : "Content-Type",
+				"value" : "text/plain"
+			},
+			{
+				"name" : "X-User-id",
+				"value" : "www"
+			},
+			{
+				"name" : "X-User-hash",
+				"value" : "global"
+			}
+		]
+	},
+	"liveobject" : {
+		"url" : "https://liveobjects.orange-business.com/api/v0/data/search/hits",
+		"headers" : [
+			{
+				"name" : "Content-Type",
+				"value" : "application/json"
+			},
+			{
+				"name" : "Accept",
+				"value" : "application/json"
+			},
+			{
+				"name" : "X-API-KEY",
+				"value" : "7181573bce384c33be9e5234d04a5302"
+			}
+		]
+	}
+}

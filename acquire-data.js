@@ -5,11 +5,18 @@
 				measurement = measurement type (const value)
 				from, to = Unix time value
  */
- function jsDataCrossroad(sensorid, measurement, fromx, tox){
+ function jsDataCrossroad(sensorid, measurement, fromx, tox, mode){
+	
 	// uradmonitorAPI
-	uradmonitorAPI(sensorid, measurement, fromx, tox);
+	if(mode.uradmonitorAPI == true){
+		uradmonitorAPI(sensorid, measurement, fromx, tox);
+	}
+	
 	// liveobjectAPI
-	liveobjectAPI(sensorid, measurement, fromx, tox);
+	if(mode.liveobjectAPI == true){
+		liveobjectAPI(sensorid, measurement, fromx, tox);
+	}
+	
  }
  
  // API for uradmonitor
@@ -22,7 +29,7 @@
 	
 	$.ajax({
 		type: 'GET',
-		url: "http://data.uradmonitor.com/api/v1/devices/" + sensorid + "/" + measurement + "/" +  fromi + "/" + toi,
+		url: configAPI.uradmonitor.url + sensorid + "/" + measurement + "/" +  fromi + "/" + toi,
 		dataType: 'json',
 		headers: { 'Content-Type' : 'text/plain',
 			'X-User-id' : 'www',
@@ -49,7 +56,7 @@
 	//AJAX request from API	
 	$.ajax({
 		type: 'POST',
-		url: "https://liveobjects.orange-business.com/api/v0/data/search/hits",
+		url: configAPI.liveobject.url,
 		data: '{ \
 				"size" : 10000, \
 				"query": { \
