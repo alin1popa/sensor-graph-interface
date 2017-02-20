@@ -50,7 +50,7 @@ QUnit.module( "Data acquire" );
 QUnit.test( "Data test", function( assert ) {
 	
 	var done = assert.async();
-	jsDataCrossroad(82000034,"temperature",Date.now()-1000,Date.now());
+	jsDataCrossroad(82000034,"temperature", "2017-02-19", "2017-02-20");
 	setTimeout(function() {
 		assert.notEqual( $( "#container" ).html(), "", "API connection OK (test sensor 82000034 temperature)" );
 		done();
@@ -61,11 +61,11 @@ QUnit.test( "Data test", function( assert ) {
 QUnit.test( "Sensors test", function( assert ) {
 	
 	var done = assert.async();
-	$.getJSON("measurements.json", function( measurements ) {
-		$.getJSON("sensors.json", function( sensors ) {
+	$.getJSON("config/uradmonitor_measurements.json", function( measurements ) {
+		$.getJSON("config/uradmonitor_sensors.json", function( sensors ) {
 			$.each( sensors, function( key, sensor ) {
 				$.each( measurements, function( key2, measurement ) {
-					jsDataCrossroad(sensor["id"], measurement["value"], Date.now()-60, Date.now());
+					jsDataCrossroad(sensor["id"], measurement["value"], "2017-02-19", "2017-02-20");
 				});
 			});
 		});
