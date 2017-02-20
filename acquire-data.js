@@ -64,14 +64,14 @@
 							{"range" : { \
 								"timestamp" : { \
 									"gte" : "' + fromx + '", \
-									"lt" : "' + tox + '" \
+									"lt" : "' + tox + '", \
+									"format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd HH:mm:ss" \
 								} \
 							}} \
 						] \
 					} \
 				} \
 			}',
-		//"format": "yyyy-MM-dd||yyyy-MM-dd" pt range
 		dataType: 'json',
 		headers: { 'Content-Type' : 'application/json',
 			'Accept' : 'application/json',
