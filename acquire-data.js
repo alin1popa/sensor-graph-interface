@@ -14,7 +14,11 @@
 	
 	// liveobjectAPI
 	if(mode.liveobjectAPI == true){
-		liveobjectAPI(sensorid, measurement, fromx, tox);
+		if (mode.securephp == true){
+			liveobjectAPIphp(sensorid, measurement, fromx, tox);
+		}else{
+			liveobjectAPIjs(sensorid, measurement, fromx, tox);
+		}
 	}
 	
  }
@@ -51,8 +55,8 @@
 	});
  }
  
- // API for liveobject
- function liveobjectAPI(sensorid, measurement, fromx, tox){
+ // API for liveobject js
+ function liveobjectAPIjs(sensorid, measurement, fromx, tox){
 	//AJAX request from API	
 	$.ajax({
 		type: 'POST',
@@ -90,6 +94,30 @@
 			var config = new Object;
 			config.type = measurement;
 			
+			// - data process
+			dataCustomProcessing(data,config);
+			
+			// - data notify
+			newDataNotification(data,config);
+		},
+		async: true
+	});
+ }
+ 
+ // API for liveobject php
+ function liveobjectAPIphp(sensorid, measurement, fromx, tox){
+	//AJAX request from API	
+	$.ajax({
+		type: 'GET',
+		url: 'liveobjectdata.php',
+		data: 'sensorid=' + encodeURIComponent(sensorid) + '&fromx=' + encodeURIComponent(fromx) + '&tox=' + encodeURIComponent(tox),
+		dataType: 'json',
+		//callback function on success:
+		success: function(data) {
+			// - set config struct
+			var config = new Object;
+			config.type = measurement;
+
 			// - data process
 			dataCustomProcessing(data,config);
 			
