@@ -52,6 +52,7 @@ QUnit.test( "Data test", function( assert ) {
 	var done = assert.async();
 	var mode = new Object;
 	mode.liveobjectAPI = true;
+	mode.securephp = true;
 	jsDataCrossroad(82000034, "temperature", "2017-02-15 09:00:00", "2017-02-15 09:10:00", mode);
 	setTimeout(function() {
 		assert.notEqual( $( "#container" ).html(), "", "API connection OK (test sensor 82000034 temperature)" );
