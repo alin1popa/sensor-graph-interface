@@ -63,6 +63,10 @@
 		url: configAPI.liveobject.url,
 		data: '{ \
 				"size" : 10000, \
+				"sort" : [ \
+						{ "timestamp" : {"order" : "asc"}}, \
+						"_score" \
+					], \
 				"query": { \
 					"bool": { \
 						"must": [ \
@@ -95,7 +99,7 @@
 			config.type = measurement;
 			
 			// - data process
-			dataCustomProcessing(data,config);
+			//dataCustomProcessing(data,config);
 			
 			// - data notify
 			newDataNotification(data,config);
