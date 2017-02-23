@@ -61,5 +61,20 @@ function drawDataInContainer(container, config, data){
   * Return value: true
   */
 function newDataNotification(data, config){
-	$("#container").append('<p>' + JSON.stringify(data) + '</p>');
+	var cdata = new Array;
+	var cdatat = new Array;
+	$.each(data, function( key , elem){
+		cdata[key] = parseFloat(elem.temperature);
+		//cdatat[key] = parseFloat(elem.value.time);
+	});
+	new Chartist.Line('.ct-chart', {
+		  labels: [  ],
+		  series: [ cdata ]
+		}, {
+		  fullWidth: true,
+		  chartPadding: {
+			right: 40
+		  }
+	});
+	//$("#container").append('<p>' + JSON.stringify(data) + '</p>');
 }
