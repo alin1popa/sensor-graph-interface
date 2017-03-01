@@ -1,5 +1,7 @@
 body {
   font: 10px sans-serif;
+  padding: 0px;
+  margin: 0px;
 }
 
 .axis path,
