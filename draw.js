@@ -1,5 +1,5 @@
-var width = 500,
-    height = 500,
+var width = Math.min(Math.min($(window).width(), $(window).height()), 900),
+    height = Math.min(Math.min($(window).width(), $(window).height()), 900),
     radius = Math.min(width, height) / 2,
     innerRadius = 0.3 * radius;
 
@@ -31,6 +31,15 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
 svg.call(tip);
+
+var imgs = svg.selectAll("image").data([0]);
+	imgs.enter()
+	.append("svg:image")
+	.attr("xlink:href", "3.jpg")
+	.attr("x", "-100")
+	.attr("y", "-100")
+	.attr("width", "200")
+	.attr("height", "200");
 
 d3.csv('aster_data.csv', function(error, data) {
 
@@ -73,11 +82,11 @@ d3.csv('aster_data.csv', function(error, data) {
     data.reduce(function(a, b) { 
       return a + b.weight; 
     }, 0);
-
+	/*
   svg.append("svg:text")
     .attr("class", "aster-score")
     .attr("dy", ".35em")
     .attr("text-anchor", "middle") // text-align: right
-    .text(Math.round(score));
+    .text(Math.round(score));*/
 
 });
