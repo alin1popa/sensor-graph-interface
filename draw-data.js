@@ -64,7 +64,7 @@ function newDataNotification(data, config){
 	var cdata = new Array;
 	var cdatat = new Array;
 	$.each(data, function( key , elem){
-		cdata[key] = parseFloat(elem.temperature);
+		cdata[key] = parseFloat(elem.value.temperature);
 		//cdatat[key] = parseFloat(elem.value.time);
 	});
 	new Chartist.Line('.ct-chart', {
