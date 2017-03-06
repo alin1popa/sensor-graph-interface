@@ -1,0 +1,129 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Dashboard 1</title>
+	<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.1.1.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	
+	<style type="text/css">
+		body{
+			padding: none;
+			margin: none;
+			
+			background: black;
+		}
+		
+		#main_container{/*
+			width: 100%;
+			height: 100%;
+			margin: none;
+			padding: none;*/
+		}
+		
+		#main_container {
+   /* Internet Explorer 10 */
+    display:-ms-flexbox;
+    -ms-flex-pack:center;
+    -ms-flex-align:center;
+    /* Firefox */
+    display:-moz-box;
+    -moz-box-pack:center;
+    -moz-box-align:center;
+    /* Safari, Opera, and Chrome */
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+    /* W3C */
+    display:box;
+    box-pack:center;
+    box-align:center;
+}
+		
+		#draw_container {
+    display:inline-block;
+    text-align:center;
+}
+		
+		#draw_container::before{
+
+    content:'';
+    display:inline-block;
+    height: 100%;
+    vertical-align:middle;
+    width:0px;
+
+		
+		/*
+			width: 100px;
+			height: 100px;
+			background-color: red;
+
+			position: absolute;
+			top:0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+
+			margin: auto;*/
+		
+			/*
+			  position:absolute;
+			  color:#fff;
+			  top:50%;
+			  left:50%;
+			  -ms-transform: translateX(-50%) translateY(-50%);
+			  -webkit-transform: translate(-50%,-50%);
+			  transform: translate(-50%,-50%);*/
+			/*background-color: blue;*/
+		}
+		
+	</style>
+	
+	<link rel="stylesheet" type="text/css" href="sky.css">
+	
+</head>
+
+<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/qunit/qunit-2.1.1.js"></script>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+	<script src="jstoolkit.js"></script>
+	<script src="draw-data.js"></script>
+	<script src="acquire-data.js"></script>
+	
+	<div class="stars"></div>
+	<div class="twinkling"></div>
+	<div class="clouds"></div>
+	
+	<div class="main_container" id="main_container">
+			<div class="draw_container" id="draw_container">
+			</div>
+	</div>
+	
+	<script>
+		$( document ).ready(function() {
+			var mode = new Object;
+			mode.liveobjectAPI = true;
+			mode.securephp = false;
+			loadConfigJSONs();
+			//var s = JSON.stringify(configAPI)
+			//alert(JSON.stringify(configAPI));
+			setTimeout(function(){
+				jsDataCrossroad(82000034, "temperature", "2017-02-13 09:00:00", "2017-02-13 22:00:00", mode);
+			}, 300);
+			//jsDataCrossroad(82000034, "temperature", "2017-02-13 09:00:00", "2017-02-14 09:00:00", mode);
+			//alert(JSON.stringify(configAPI));
+		});
+	</script>
+	
+	<div id="testdata">
+	</div>
+	
+	<script src="draw.js" ></script>
+
+</body>
+
+</html> 

@@ -5,25 +5,186 @@
 	<meta name="viewport" content="width=device-width">
 	<title>Dashboard 1</title>
 	<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.1.1.css">
+	<link rel="stylesheet" type="text/css" href="sky.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	
+	<style type="text/css">
+		body{
+			padding: none;
+			margin: none;
+			
+			background: black;
+		}
+		
+		#main_container{/*
+			width: 100%;
+			height: 100%;
+			margin: none;
+			padding: none;*/
+		}
+		
+		#main_container {
+   /* Internet Explorer 10 */
+    display:-ms-flexbox;
+    -ms-flex-pack:center;
+    -ms-flex-align:center;
+    /* Firefox */
+    display:-moz-box;
+    -moz-box-pack:center;
+    -moz-box-align:center;
+    /* Safari, Opera, and Chrome */
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+    /* W3C */
+    display:box;
+    box-pack:center;
+    box-align:center;
+}
+		
+		#draw_container {
+    display:inline-block;
+    text-align:center;
+
+  background: -moz-radial-gradient(farthest-side, rgba(0,0,0,1) 30%, rgba(255,255,255,0.2) 20%, rgba(255,255,255,0));
+
+}
+		
+		#draw_container::before{
+
+    content:'';
+    display:inline-block;
+    height: 100%;
+    vertical-align:middle;
+    width:0px;
+
+		
+		/*
+			width: 100px;
+			height: 100px;
+			background-color: red;
+
+			position: absolute;
+			top:0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+
+			margin: auto;*/
+		
+			/*
+			  position:absolute;
+			  color:#fff;
+			  top:50%;
+			  left:50%;
+			  -ms-transform: translateX(-50%) translateY(-50%);
+			  -webkit-transform: translate(-50%,-50%);
+			  transform: translate(-50%,-50%);*/
+			/*background-color: blue;*/
+		}
+		
+		#slider_cont {
+    display:inline-block;
+    text-align:center;
+	width: 100%;
+	
+	#slider {
+	width: 400px;
+	height: 17px;
+	position: relative;
+	margin: 100px auto;
+	background: #10171D;
+	
+	-webkit-border-radius: 40px;
+	-moz-border-radius: 40px;
+	border-radius: 40px;
+	
+	-webkit-box-shadow: inset 0px 0px 1px 1px rgba(0, 0, 0, 0.9), 0px 1px 1px 0px rgba(255, 255, 255, 0.13);
+	-moz-box-shadow: inset 0px 0px 1px 1px rgba(0, 0, 0, 0.9), 0px 1px 1px 0px rgba(255, 255, 255, 0.13);
+	box-shadow: inset 0px 0px 1px 1px rgba(0, 0, 0, 0.9), 0px 1px 1px 0px rgba(255, 255, 255, 0.13);
+}
+
+#slider .bar {
+	width: 388px;
+	height: 5px;
+	background: #333;
+	position: relative;
+	top: -4px;
+	left: 4px;	
+	
+	background: #1d2e38;
+	background: -moz-linear-gradient(left, #1d2e38 0%, #2b4254 50%, #2b4254 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#1d2e38), color-stop(50%,#2b4254), color-stop(100%,#2b4254));
+	background: -webkit-linear-gradient(left, #1d2e38 0%,#2b4254 50%,#2b4254 100%);
+	background: -o-linear-gradient(left, #1d2e38 0%,#2b4254 50%,#2b4254 100%);
+	background: -ms-linear-gradient(left, #1d2e38 0%,#2b4254 50%,#2b4254 100%);
+	background: linear-gradient(left, #1d2e38 0%,#2b4254 50%,#2b4254 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d2e38', endColorstr='#2b4254',GradientType=1 );	
+	
+	-webkit-border-radius: 40px;
+	-moz-border-radius: 40px;
+	border-radius: 40px;
+}
+
+		
+		
+	</style>
+	
 </head>
 
 <body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/qunit/qunit-2.1.1.js"></script>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 	<script src="jstoolkit.js"></script>
 	<script src="draw-data.js"></script>
 	<script src="acquire-data.js"></script>
-	<script src="http://d3js.org/d3.v3.min.js"></script>
-	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-	<script src="draw.js" ></script>
-	<!-- TODO 
-		* create a configurable layout
-		* layout boxes that can later have graphs placed into them
-		* eye candy man
-		* new
-	-->
 	
+	<div class="stars">
+	<div class="twinkling">
+	
+	<div class="main_container" id="main_container" style="display:none">
+			<div class="draw_container" id="draw_container">
+			</div>
+			<br>
+			<div class="slider_cont" id="slider_cont">
+				<div id="slider">
+	<input class="bar" type="range" id="rangeinput" min="0" max="10" step="1" value="5"/>
+	<span class="highlight"></span>
+</div>
+			</div>
+	</div>
+	
+	<div id="testdata">
+	</div>
+	</div>
+	</div>
+	
+	<script>
+		$( document ).ready(function() {
+			var mode = new Object;
+			mode.liveobjectAPI = true;
+			mode.securephp = false;
+			loadConfigJSONs();
+			//var s = JSON.stringify(configAPI)
+			//alert(JSON.stringify(configAPI));
+			setTimeout(function(){
+				jsDataCrossroad(82000034, "temperature", "2017-02-10 09:00:00", "2017-02-12 22:00:00", mode);
+			}, 300);
+			//jsDataCrossroad(82000034, "temperature", "2017-02-13 09:00:00", "2017-02-14 09:00:00", mode);
+			//alert(JSON.stringify(configAPI));
+			$( "#rangeinput" ).change(function() {
+				//alert("2017-02-"+(10+Math.floor($( "#rangeinput" ).val()/2 ))+" "+(parseInt($( "#rangeinput" ).val())%2==0?"13":"22")+":00:00");
+				d3.selectAll('svg > g > *').remove();
+				jsDataCrossroad(82000034, "temperature", "2017-02-10 09:00:00", "2017-02-"+(10+Math.floor($( "#rangeinput" ).val()/2 ))+" "+(parseInt($( "#rangeinput" ).val())%2==0?"13":"22")+":00:00", mode);
+			});
+			
+		});
+	</script>
+	
+	<script src="draw.js" ></script>
+
 </body>
 
 </html> 
