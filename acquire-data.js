@@ -60,7 +60,8 @@
 	//AJAX request from API	
 	$.ajax({
 		type: 'POST',
-		url: configAPI.liveobject.url,
+		//url: configAPI.liveobject.url,
+		url: "https://liveobjects.orange-business.com/api/v0/data/search/hits",
 		data: '{ \
 				"size" : 10000, \
 				"sort" : [ \
@@ -82,7 +83,13 @@
 									"lt" : "' + tox + '", \
 									"format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd HH:mm:ss" \
 								} \
-							}} \
+							}}, \
+							{"script" : { \
+								   "script" : { \
+									"inline": "(doc[\'timestamp\']/1000) % (60*110) < 61", \
+									"lang": "expression" \
+												} \
+								}} \
 						] \
 					} \
 				} \
@@ -94,6 +101,7 @@
 			
 		//callback function on success:
 		success: function(data) {
+			
 			// - set config struct
 			var config = new Object;
 			config.type = measurement;
